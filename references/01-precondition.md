@@ -116,9 +116,11 @@
 
 ## 配置持久化
 
-所有经过用户确认的偏好配置会保存到 `~/.config/wubc-extracting-weekly-todos/config.json`。
+配置持久化的核心原则：**用户一经明确，除非用户主动提出修改，否则不再重复询问。**
 
 ### 保存内容
+
+保存到 `~/.config/wubc-extracting-weekly-todos/config.json`：
 
 ```json
 {
@@ -127,8 +129,8 @@
   "dingtalk": {
     "multi_org": true,
     "orgs": [
-      {"name": "nonoil", "corp_id": "dingxxxxxxxxxxxxxxxxxxxxxx"},
-      {"name": "trade", "corp_id": "dingyyyyyyyyyyyyyyyyyyyyyy"}
+      {"name": "org1", "corp_id": "dingxxxxxxxxxxxxxxxxxxxxxx"},
+      {"name": "org2", "corp_id": "dingyyyyyyyyyyyyyyyyyyyyyy"}
     ]
   },
   "output": {
@@ -138,21 +140,14 @@
 }
 ```
 
-### 保存时机
+### 运行时行为
 
-- **首次运行**：阶段一全部完成时保存
-- **后续运行**：
-  - "使用上次配置" → 不保存（未修改）
-  - "更新配置" → 修改后保存
-  - "重新配置" → 覆盖保存
-
-### 读取时机
-
-每次运行阶段一前，先检查配置文件是否存在。
+- **配置文件存在** → 静默加载，跳过 1.3~1.5，不向用户确认
+- **配置文件不存在** → 走完整 1.1~1.5 流程，完成后保存
+- **用户主动说要改**（如"改到飞书文档"）→ 更新对应项后重新保存
 
 ### 清除配置
 
-如果用户说"清除我的配置"或"重置配置"，删除该配置文件即可：
 ```bash
 rm -f ~/.config/wubc-extracting-weekly-todos/config.json
 ```
