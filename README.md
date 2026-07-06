@@ -38,6 +38,20 @@ codex skill install .
 
 ## 使用示例
 
+## 配置持久化
+
+首次使用时，您在阶段一中填写的偏好配置（多组织 corp_id、输出位置、是否通知责任人）会自动保存到 `~/.config/wubc-extracting-weekly-todos/config.json`。
+
+后续使用时，Skill 会自动检测已保存的配置并询问是否直接使用，无需重复填写。可选操作：
+- **使用配置** → 跳过偏好设置，直接进入信息检索
+- **更新配置** → 修改部分设置后保存
+- **重新配置** → 全部重新设置，覆盖旧配置
+
+如需清除所有配置，运行：
+```bash
+rm -f ~/.config/wubc-extracting-weekly-todos/config.json
+```
+
 ### 示例 1：正常周待办提取
 ```
 帮我提取下周待办事项

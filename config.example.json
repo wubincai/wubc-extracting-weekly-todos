@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "updated_at": "YYYY-MM-DDTHH:mm:ss+08:00",
+
+  "dingtalk": {
+    "multi_org": false,
+    "orgs": [
+      {
+        "name": "{{ORG_1_NAME}}",
+        "corp_id": "{{ORG_1_CORP_ID}}"
+      },
+      {
+        "name": "{{ORG_2_NAME}}",
+        "corp_id": "{{ORG_2_CORP_ID}}"
+      }
+    ]
+  },
+
+  "output": {
+    "location": "feishu_doc",
+    "notify_responsible": true
+  }
+}

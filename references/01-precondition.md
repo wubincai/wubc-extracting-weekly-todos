@@ -113,3 +113,46 @@
 
 - 是：后续对"团队完成"类事项，通过钉钉发送私聊通知
 - 否：跳过
+
+## 配置持久化
+
+所有经过用户确认的偏好配置会保存到 `~/.config/wubc-extracting-weekly-todos/config.json`。
+
+### 保存内容
+
+```json
+{
+  "version": 1,
+  "updated_at": "2026-07-06T18:00:00+08:00",
+  "dingtalk": {
+    "multi_org": true,
+    "orgs": [
+      {"name": "nonoil", "corp_id": "dingxxxxxxxxxxxxxxxxxxxxxx"},
+      {"name": "trade", "corp_id": "dingyyyyyyyyyyyyyyyyyyyyyy"}
+    ]
+  },
+  "output": {
+    "location": "feishu_doc",
+    "notify_responsible": true
+  }
+}
+```
+
+### 保存时机
+
+- **首次运行**：阶段一全部完成时保存
+- **后续运行**：
+  - "使用上次配置" → 不保存（未修改）
+  - "更新配置" → 修改后保存
+  - "重新配置" → 覆盖保存
+
+### 读取时机
+
+每次运行阶段一前，先检查配置文件是否存在。
+
+### 清除配置
+
+如果用户说"清除我的配置"或"重置配置"，删除该配置文件即可：
+```bash
+rm -f ~/.config/wubc-extracting-weekly-todos/config.json
+```
