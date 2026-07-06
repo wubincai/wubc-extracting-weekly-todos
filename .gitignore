@@ -1,0 +1,27 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Personal configuration (create your own config.sh from config.example.sh)
+config.sh
+config.local.sh
+*.secret.*
+
+# Authentication data
+.auth/
+.dws.backup.*
+*.token
+*.credential
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
