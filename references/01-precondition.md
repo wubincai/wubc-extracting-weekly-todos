@@ -136,6 +136,11 @@
   "output": {
     "location": "feishu_doc",
     "notify_responsible": true
+  },
+
+  "search": {
+    "contacts": ["张三", "李四"],
+    "groups": ["团队群", "项目群"]
   }
 }
 ```
